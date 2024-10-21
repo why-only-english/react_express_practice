@@ -5,6 +5,8 @@ import BlinkComponent from "./components/BlinkComponent";
 import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 
+import InputSum from "./components/InputSum";
+
 function App() {
   return (
     <div
@@ -16,21 +18,8 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <h1>카운터 컴포넌트</h1>
-      <OnChangeInput />
-      {/* <CountComponent /> */}
-      {/* <CaptionImage
-        imgUrl="https://kkoma.net/web/product/big/201905/4aa48d0ebab9f50f9e3b47fb7b8af386.jpg"
-        caption="구름 그림"
-      />
-      <MyButton
-        title="네이버로 이동"
-        color="green"
-        clickUrl="https://www.naver.com/"
-      /> */}
-      {/* <BlinkComponent text="이건 깜박입니다." /> */}
-      {/* <HelloWorld />
-      <HelloWorld2 /> */}
+      <h1>두 숫자의 합 계산</h1>
+      <InputSum />
     </div>
   );
 }
