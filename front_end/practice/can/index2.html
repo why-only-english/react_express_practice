@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="my-btn" onclick="javascript:onClickEvent(event)">
+        클릭
+    </button>
+    
+    <button id="my-btn2">
+        클릭2
+    </button>
+
+    <script>
+        function onClickEvent(event){
+            console.log("click 이벤트 발생");
+            console.log(event.type);
+            console.log(event.target)
+        }
+        const btn2 = document.getElementById('my-btn2');
+        
+        btn2.addEventListener('click', (event)=>{
+            console.log("click2 이벤트 발생");
+            onClickEvent(event);
+        })
+
+    </script>
+    
+</body>
+</html>
