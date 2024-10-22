@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function InputSum() {
   const [input1, setInput1] = useState('');
@@ -14,19 +14,9 @@ function InputSum() {
 
   return (
     <div>
-      <input
-        type="number"
-        value={input1}
-        onChange={handleInput1Change}
-        placeholder="첫번째 숫자"
-      />
-      <input
-        type="number"
-        value={input2}
-        onChange={handleInput2Change}
-        placeholder="두번째 숫자"
-      />
-      <h2 style={{ color: "red" }}>{input1 + input2}</h2>
+      <input type="number" value={input1} onChange={handleInput1Change} placeholder="첫번째 숫자" />
+      <input type="number" value={input2} onChange={handleInput2Change} placeholder="두번째 숫자" />
+      <h2 style={{ color: 'red' }}>{input1 + input2}</h2>
     </div>
   );
 }

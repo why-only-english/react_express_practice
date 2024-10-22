@@ -1,35 +1,35 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function ForbiddenWords() {
   const [forbiddenWords, setForbiddenWords] = useState([]);
-  const [newWord, setNewWord] = useState("");
-  const [userInput, setUserInput] = useState("");
+  const [newWord, setNewWord] = useState('');
+  const [userInput, setUserInput] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
 
   const addForbiddenWord = () => {
     const trimmedWord = newWord.trim();
-    if (trimmedWord !== "") {
+    if (trimmedWord !== '') {
       setForbiddenWords([...forbiddenWords, trimmedWord]);
-      setNewWord("");
+      setNewWord('');
     }
   };
 
   const addFilteredResult = () => {
-    if (userInput.trim() !== "") {
+    if (userInput.trim() !== '') {
       const filteredText = filterForbiddenWords(userInput);
       setFilteredResults([...filteredResults, filteredText]);
-      setUserInput("");
+      setUserInput('');
     }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       addForbiddenWord();
     }
   };
 
   const handleKeyPressForInput = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       addFilteredResult();
     }
   };
@@ -37,8 +37,8 @@ function ForbiddenWords() {
   const filterForbiddenWords = (text) => {
     let filteredText = text;
     forbiddenWords.forEach((word) => {
-      const regExp = new RegExp(word.split("").join("\\s*"), "gi");
-      filteredText = filteredText.replace(regExp, "**");
+      const regExp = new RegExp(word.split('').join('\\s*'), 'gi');
+      filteredText = filteredText.replace(regExp, '**');
     });
     return filteredText;
   };

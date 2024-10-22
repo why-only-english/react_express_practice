@@ -1,12 +1,12 @@
-import HelloWorld, { HelloWorld2 } from "./components/HelloWorld";
-import CaptionImage from "./components/CaptionImage";
-import MyButton from "./components/MyButton";
-import BlinkComponent from "./components/BlinkComponent";
-import CountComponent from "./components/CountComponent";
-import OnChangeInput from "./components/OnChangeInput";
-import ForbiddenWords from "./components/ForbiddenWords";
+import HelloWorld, { HelloWorld2 } from './components/HelloWorld';
+import CaptionImage from './components/CaptionImage';
+import MyButton from './components/MyButton';
+import BlinkComponent from './components/BlinkComponent';
+import CountComponent from './components/CountComponent';
+import OnChangeInput from './components/OnChangeInput';
+import ForbiddenWords from './components/ForbiddenWords';
 
-import TimerWithInput from './components/TimerWithInput'; 
+import TimerWithInput from './components/TimerWithInput';
 
 function App() {
   return (
@@ -25,4 +25,3 @@ function App() {
 }
 
 export default App;
-

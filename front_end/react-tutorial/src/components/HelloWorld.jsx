@@ -10,20 +10,21 @@
  * REACT => style태그 적용을 JS객체로 (CamelCase)
  **/
 
-import "./HelloWorld.css";
+import './HelloWorld.css';
 
 function HelloWorld() {
   // text-align => textAlign,
   // justify-content => justifyContent,
   // font-size => fontSize
-  const styleObj = { display: "flex", justifyContent: "center" };
+  const styleObj = { display: 'flex', justifyContent: 'center' };
+
   return (
     <div style={styleObj}>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <h1>Hello World</h1>
@@ -34,17 +35,13 @@ function HelloWorld() {
 }
 
 export function HelloWorld2() {
-  const classes = "hello-world";
+  const classes = 'hello-world';
   const value = 10;
-  return (
-    <div className={`${classes} ${value > 5 ? "new-class" : "false-class"}`}>
-      HelloWorld2
-    </div>
-  );
+  return <div className={`${classes} ${value > 5 ? 'new-class' : 'false-class'}`}>HelloWorld2</div>;
 }
 
 export const sampleVar = {
-  greeting: "HelloWorld",
+  greeting: 'HelloWorld',
 };
 // export {HelloWorld2};
 

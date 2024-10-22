@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 function StopWatch() {
   const [time, setTime] = useState(0);
@@ -32,7 +32,7 @@ function StopWatch() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div style={{ textAlign: 'center', padding: '20px' }}>
       <h1>타이머: {time.toFixed(2)}초</h1> {/* 소수점 2자리까지 표시 */}
       <div>
         <button onClick={handleStart} style={buttonStyle}>
@@ -50,10 +50,10 @@ function StopWatch() {
 }
 
 const buttonStyle = {
-  margin: "10px",
-  padding: "10px 20px",
-  fontSize: "16px",
-  cursor: "pointer",
+  margin: '10px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer',
 };
 
 export default StopWatch;
