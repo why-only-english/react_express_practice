@@ -6,16 +6,23 @@ function ForbiddenWords() {
   const [userInput, setUserInput] = useState(""); 
 
   const addForbiddenWord = () => {
-    if (newWord.trim() !== "") {
-      setForbiddenWords([...forbiddenWords, newWord.trim()]);
+    const trimmedWord = newWord.trim(); 
+    if (trimmedWord !== "") {
+      setForbiddenWords([...forbiddenWords, trimmedWord]);
       setNewWord(""); 
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      addForbiddenWord(); 
     }
   };
 
   const filterForbiddenWords = (text) => {
     let filteredText = text;
     forbiddenWords.forEach((word) => {
-      const regExp = new RegExp(word, "gi");
+      const regExp = new RegExp(word.split("").join("\\s*"), "gi"); 
       filteredText = filteredText.replace(regExp, "**");
     });
     return filteredText;
@@ -29,6 +36,7 @@ function ForbiddenWords() {
         type="text"
         value={newWord}
         onChange={(e) => setNewWord(e.target.value)}
+        onKeyPress={handleKeyPress} 
         placeholder="금지어 입력"
       />
       <button onClick={addForbiddenWord}>Add</button>
