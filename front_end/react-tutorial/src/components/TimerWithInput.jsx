@@ -8,22 +8,29 @@ function TimerWithInput() {
   useEffect(() => {
     let interval = null;
 
-    if (isActive && timeLeft > 0) {
+    if (isActive) {
       interval = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
-      }, 1000);
-    } else if (timeLeft === 0 && isActive) {
-      clearInterval(interval);
-      setIsActive(false);
-      alert("타이머 종료!");
+        setTimeLeft((prevTime) => {
+          const newTime = prevTime - 0.01;
+          return newTime >= 0 ? newTime : 0;
+        });
+      }, 10);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timeLeft]);
+  }, [isActive]);
+
+  useEffect(() => {
+    if (timeLeft <= 0 && isActive) {
+      setIsActive(false);
+      alert("타이머 종료!");
+    }
+  }, [timeLeft, isActive]);
 
   const handleStart = () => {
-    if (inputTime > 0) {
-      setTimeLeft(parseInt(inputTime));
+    const parsedTime = parseFloat(inputTime);
+    if (parsedTime > 0) {
+      setTimeLeft(parsedTime);
       setIsActive(true);
     }
   };
@@ -34,12 +41,26 @@ function TimerWithInput() {
     setInputTime("");
   };
 
+  const displayTime =
+    timeLeft > 10 ? timeLeft.toFixed(0) + "초" : timeLeft.toFixed(2) + "초";
+
+  const timeStyle = {
+    color:
+      isActive && timeLeft > 0 && timeLeft < 5
+        ? Math.floor(timeLeft * 5) % 2 === 0
+          ? "red"
+          : "black"
+        : "black",
+  };
+
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>타이머</h1>
 
+      {/* 사용자가 시간을 입력하는 부분 */}
       <input
         type="number"
+        step="0.01"
         placeholder="시간(초) 입력"
         value={inputTime}
         onChange={(e) => setInputTime(e.target.value)}
@@ -55,8 +76,10 @@ function TimerWithInput() {
         </button>
       </div>
 
-      <h2>
-        {timeLeft > 0 ? `남은 시간: ${timeLeft}초` : "타이머가 준비되었습니다."}
+      <h2 style={timeStyle}>
+        {timeLeft > 0
+          ? `남은 시간: ${displayTime}`
+          : "타이머가 준비되었습니다."}
       </h2>
     </div>
   );
