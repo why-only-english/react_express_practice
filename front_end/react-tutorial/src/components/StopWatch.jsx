@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function StopWatch() {
-  const [time, setTime] = useState(0); 
+  const [time, setTime] = useState(0);
   const [isActive, setIsActive] = useState(false); 
 
   useEffect(() => {
@@ -9,13 +9,13 @@ function StopWatch() {
 
     if (isActive) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000);
+        setTime((prevTime) => prevTime + 0.01); 
+      }, 10); 
     } else if (!isActive && time !== 0) {
       clearInterval(interval);
     }
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [isActive, time]);
 
   const handleStart = () => {
@@ -33,7 +33,7 @@ function StopWatch() {
 
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h1>StopWatch: {time}초</h1>
+      <h1>타이머: {time.toFixed(2)}초</h1> {/* 소수점 2자리까지 표시 */}
       <div>
         <button onClick={handleStart} style={buttonStyle}>Start</button>
         <button onClick={handleStop} style={buttonStyle}>Stop</button>
