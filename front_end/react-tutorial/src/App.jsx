@@ -4,22 +4,23 @@ import MyButton from "./components/MyButton";
 import BlinkComponent from "./components/BlinkComponent";
 import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
+import ForbiddenWords from "./components/ForbiddenWords";
 
-import ForbiddenWords from "./components/ForbiddenWords"; 
+import OnOffToggle from "./components/OnOffToggle";
 
 function App() {
   return (
     <div
       style={{
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
+        alignItems: "center",
         height: "100vh",
         flexDirection: "column",
       }}
     >
-      <h1>금지어 필터링 시스템</h1>
-      <ForbiddenWords /> {/* 금지어 컴포넌트 사용 */}
+      <h1>토글 버튼</h1>
+      <OnOffToggle /> {/* 토글 버튼 렌더링 */}
     </div>
   );
 }
