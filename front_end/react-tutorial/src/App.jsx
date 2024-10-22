@@ -5,7 +5,7 @@ import BlinkComponent from "./components/BlinkComponent";
 import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 
-import InputSum from "./components/InputSum";
+import ForbiddenWords from "./components/ForbiddenWords"; 
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <h1>두 숫자의 합 계산</h1>
-      <InputSum />
+      <h1>금지어 필터링 시스템</h1>
+      <ForbiddenWords /> {/* 금지어 컴포넌트 사용 */}
     </div>
   );
 }
