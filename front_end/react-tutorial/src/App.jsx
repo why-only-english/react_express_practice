@@ -6,21 +6,20 @@ import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 import ForbiddenWords from "./components/ForbiddenWords";
 
-import OnOffToggle from "./components/OnOffToggle";
+import UserList from './components/UserList'; // UserList 컴포넌트 임포트
 
 function App() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
       }}
     >
-      <h1>토글 버튼</h1>
-      <OnOffToggle /> {/* 토글 버튼 렌더링 */}
+      <UserList /> {/* 사용자 목록을 렌더링 */}
     </div>
   );
 }
