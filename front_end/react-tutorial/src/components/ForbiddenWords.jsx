@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 function ForbiddenWords() {
-  const [forbiddenWords, setForbiddenWords] = useState([]); 
+  const [forbiddenWords, setForbiddenWords] = useState([]);
   const [newWord, setNewWord] = useState("");
-  const [userInput, setUserInput] = useState(""); 
-  const [filteredResults, setFilteredResults] = useState([]); 
+  const [userInput, setUserInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
 
   const addForbiddenWord = () => {
-    const trimmedWord = newWord.trim(); 
+    const trimmedWord = newWord.trim();
     if (trimmedWord !== "") {
       setForbiddenWords([...forbiddenWords, trimmedWord]);
       setNewWord("");
@@ -17,27 +17,27 @@ function ForbiddenWords() {
   const addFilteredResult = () => {
     if (userInput.trim() !== "") {
       const filteredText = filterForbiddenWords(userInput);
-      setFilteredResults([...filteredResults, filteredText]); 
-      setUserInput(""); 
+      setFilteredResults([...filteredResults, filteredText]);
+      setUserInput("");
     }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      addForbiddenWord(); 
+      addForbiddenWord();
     }
   };
 
   const handleKeyPressForInput = (e) => {
     if (e.key === "Enter") {
-      addFilteredResult(); 
+      addFilteredResult();
     }
   };
 
   const filterForbiddenWords = (text) => {
     let filteredText = text;
     forbiddenWords.forEach((word) => {
-      const regExp = new RegExp(word.split("").join("\\s*"), "gi"); 
+      const regExp = new RegExp(word.split("").join("\\s*"), "gi");
       filteredText = filteredText.replace(regExp, "**");
     });
     return filteredText;
@@ -51,7 +51,7 @@ function ForbiddenWords() {
         type="text"
         value={newWord}
         onChange={(e) => setNewWord(e.target.value)}
-        onKeyPress={handleKeyPress} 
+        onKeyPress={handleKeyPress}
         placeholder="금지어 입력"
       />
       <button onClick={addForbiddenWord}>Add</button>
