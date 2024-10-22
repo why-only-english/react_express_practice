@@ -6,21 +6,23 @@ import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 import ForbiddenWords from "./components/ForbiddenWords";
 
-import StopWatch from "./components/StopWatch";
+import TimerWithInput from './components/TimerWithInput'; 
 
 function App() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        flexDirection: 'column',
       }}
     >
-      <StopWatch /> {/* 스탑워치 컴포넌트 렌더링 */}
+      <TimerWithInput /> {/* 타이머 컴포넌트 렌더링 */}
     </div>
   );
 }
 
 export default App;
+
