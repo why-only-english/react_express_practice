@@ -6,20 +6,12 @@ import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 import ForbiddenWords from "./components/ForbiddenWords";
 
-import UserList from './components/UserList'; 
+import StopWatch from './components/StopWatch'; 
 
 function App() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-      }}
-    >
-      <UserList /> {/* 사용자 목록을 렌더링 */}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <StopWatch /> {/* 스탑워치 컴포넌트 렌더링 */}
     </div>
   );
 }
