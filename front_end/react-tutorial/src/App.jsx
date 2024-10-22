@@ -6,7 +6,7 @@ import CountComponent from "./components/CountComponent";
 import OnChangeInput from "./components/OnChangeInput";
 import ForbiddenWords from "./components/ForbiddenWords";
 
-import UserList from './components/UserList'; // UserList 컴포넌트 임포트
+import UserList from './components/UserList'; 
 
 function App() {
   return (
