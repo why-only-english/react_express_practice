@@ -1,6 +1,6 @@
 function Colorbar({ handleColorClick }) {
   return (
-    <div style={{ margin: '20px 0' }}>
+    <div style={{ margin: '1px 0' }}>
       {['#ffffff', '#ef9a9a', '#fff59d', '#a5d6a7'].map((color) => (
         <span
           key={color}
