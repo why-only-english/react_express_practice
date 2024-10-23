@@ -1,15 +1,24 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Colorbar from './Colorbar';
 import TodoList from './TodoList';
 
 function TodoApp() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    // 브라우저에 저장된 할 일 목록을 불러옴, 없으면 빈 배열 반환
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [selectedColor, setSelectedColor] = useState('#ffffff'); // 기본 색상 설정
   const [inputValue, setInputValue] = useState(''); // 할 일 입력 필드
   const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
   const [isSearching, setIsSearching] = useState(false); // 검색 상태 확인
 
   const inputRef = useRef(null); // 입력 필드에 대한 참조 생성
+
+  // 할 일이 추가될 때마다 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   // 할 일 추가
   const addTodo = () => {
