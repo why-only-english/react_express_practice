@@ -91,7 +91,7 @@ function TodoApp() {
         <button
           onClick={resetSearch}
           style={{
-            margin: '20px',
+            margin: '10px',
             padding: '10px',
             backgroundColor: '#ff6666',
             color: 'white',
