@@ -1,5 +1,5 @@
 function TodoItem({ todo, index, removeTodo, isSearching }) {
-  const handleClick = () => {
+  const handleDoubleClick = () => {
     if (!isSearching) {
       removeTodo(index); // 검색 중이 아닐 때만 삭제 가능
     }
@@ -7,7 +7,7 @@ function TodoItem({ todo, index, removeTodo, isSearching }) {
 
   return (
     <div
-      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
       style={{
         backgroundColor: todo.color || '#FFFFFF',
         padding: '10px',

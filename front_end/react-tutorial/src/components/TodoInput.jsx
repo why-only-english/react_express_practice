@@ -31,7 +31,9 @@ function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
           padding: '10px',
           width: '300px',
           marginBottom: '10px',
-          borderRadius: '4px',
+          borderRadius: '10px',
+          border: '2px solid',
+          borderColor: 'black',
         }}
         placeholder="할 일 입력"
       />
@@ -46,7 +48,9 @@ function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
           backgroundColor: '#78909c',
           color: 'white',
           cursor: 'pointer',
-          borderRadius: '4px',
+          borderRadius: '10px',
+          border: '2px solid',
+          borderColor: 'black',
         }}
       >
         입력

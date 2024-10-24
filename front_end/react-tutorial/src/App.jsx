@@ -11,7 +11,7 @@ function App() {
         gap: '20px',
         padding: '20px',
         backgroundColor: '#d0e8ff',
-        height: '100vh',
+        // minHeight: '100vh',
       }}
     >
       {/* TodoApp 컴포넌트 */}

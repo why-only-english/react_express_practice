@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TodoInput from './TodoInput'; // Todo 입력 부분을 별도 컴포넌트로 분리
 import TodoList from './TodoList'; // Todo 리스트 표시 컴포넌트
 import TodoColorbar from './TodoColorbar'; // 색상 선택바 컴포넌트
@@ -51,7 +51,7 @@ function TodoApp() {
     <div
       style={{
         textAlign: 'center',
-        height: '100vh',
+        height: 'auto',
         padding: '20px',
         backgroundColor: '#b3d9ff',
       }}
@@ -77,12 +77,17 @@ function TodoApp() {
             backgroundColor: '#ffffff',
             padding: '10px',
             width: '200px',
-            borderRadius: '4px',
+            borderRadius: '10px',
+            border: '2px solid',
+            borderColor: 'black',
             marginRight: '10px',
           }}
         />
       </div>
 
+      <div>
+        <p>할 일을 더블 클릭하면 삭제됩니다.</p>
+      </div>
       {/* 색상 선택바 컴포넌트 */}
       <TodoColorbar handleColorClick={handleColorClick} />
 
@@ -96,7 +101,7 @@ function TodoApp() {
             backgroundColor: '#ff6666',
             color: 'white',
             cursor: 'pointer',
-            borderRadius: '4px',
+            borderRadius: '10px',
           }}
         >
           Todo 목록으로 돌아가기
