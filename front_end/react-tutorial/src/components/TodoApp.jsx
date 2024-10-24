@@ -4,16 +4,15 @@ import TodoList from './TodoList';
 
 function TodoApp() {
   const [todos, setTodos] = useState(() => {
-    // 브라우저에 저장된 할 일 목록을 불러옴, 없으면 빈 배열 반환
     const savedTodos = localStorage.getItem('todos');
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
-  const [selectedColor, setSelectedColor] = useState('#ffffff'); // 기본 색상 설정
-  const [inputValue, setInputValue] = useState(''); // 할 일 입력 필드
-  const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
-  const [isSearching, setIsSearching] = useState(false); // 검색 상태 확인
+  const [selectedColor, setSelectedColor] = useState('#ffffff');
+  const [inputValue, setInputValue] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
-  const inputRef = useRef(null); // 입력 필드에 대한 참조 생성
+  const inputRef = useRef(null);
 
   // 할 일이 추가될 때마다 localStorage에 저장
   useEffect(() => {
@@ -26,6 +25,13 @@ function TodoApp() {
       setTodos([...todos, { text: inputValue, color: selectedColor }]);
       setInputValue('');
     }
+  };
+
+  // 할 일 삭제
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
   };
 
   // 색상 선택 시 입력 필드 배경색 변경 및 포커스 이동
@@ -111,7 +117,7 @@ function TodoApp() {
           onChange={handleSearch} // 검색어 입력 시 상태 업데이트
           placeholder="Todo 검색"
           style={{
-            backgroundColor: '#ffffff', // 검색 필드는 흰색
+            backgroundColor: '#ffffff',
             padding: '10px',
             width: '200px',
             border: '1px solid #ccc',
@@ -144,7 +150,7 @@ function TodoApp() {
       )}
 
       {/* 할 일 목록 (필터링된 리스트 또는 전체 리스트) */}
-      <TodoList todos={isSearching ? filteredTodos : todos} />
+      <TodoList todos={isSearching ? filteredTodos : todos} removeTodo={removeTodo} isSearching={isSearching} />
     </div>
   );
 }
