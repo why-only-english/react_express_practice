@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
   const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     if (focusInput) {
@@ -10,12 +11,10 @@ function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
     }
   }, [focusInput, setFocusInput]);
 
-  const [inputValue, setInputValue] = useState('');
-
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       addTodo(inputValue);
-      setInputValue('');
+      setInputValue(''); // 할 일 추가 후 입력창 초기화
     }
   };
 
@@ -32,25 +31,21 @@ function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
           padding: '10px',
           width: '300px',
           marginBottom: '10px',
-          border: '1px solid #ccc',
           borderRadius: '4px',
-          color: '#333',
         }}
         placeholder="할 일 입력"
       />
       <button
         onClick={() => {
           addTodo(inputValue);
-          setInputValue('');
+          setInputValue(''); // 버튼 클릭 시 할 일 추가 및 입력창 초기화
         }}
         style={{
           marginLeft: '10px',
           padding: '10px',
-          border: 'none',
           backgroundColor: '#78909c',
           color: 'white',
           borderRadius: '4px',
-          cursor: 'pointer',
         }}
       >
         입력

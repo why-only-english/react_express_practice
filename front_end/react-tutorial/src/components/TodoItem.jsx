@@ -1,9 +1,10 @@
 function TodoItem({ todo, index, removeTodo, isSearching }) {
   const handleClick = () => {
     if (!isSearching) {
-      removeTodo(index); // 검색 중이 아닐 때만 삭제
+      removeTodo(index); // 검색 중이 아닐 때만 삭제 가능
     }
   };
+
   return (
     <div
       onClick={handleClick}
