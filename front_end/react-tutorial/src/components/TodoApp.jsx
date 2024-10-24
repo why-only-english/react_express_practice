@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import TodoInput from './TodoInput'; // Todo 입력 부분을 별도 컴포넌트로 분리
-import TodoList from './TodoList'; // Todo 리스트 표시 컴포넌트
-import TodoColorbar from './TodoColorbar'; // 색상 선택바 컴포넌트
+import TodoInput from './TodoInput';
+import TodoList from './TodoList';
+import TodoColorbar from './TodoColorbar';
 
 function TodoApp() {
   const [todos, setTodos] = useState(() => {
@@ -20,7 +20,7 @@ function TodoApp() {
   const addTodo = (todoText) => {
     if (todoText) {
       setTodos([...todos, { text: todoText, color: selectedColor }]);
-      setFocusInput(true); // 할 일을 추가하면 입력 필드로 포커스 이동
+      setFocusInput(true);
     }
   };
 
@@ -30,21 +30,27 @@ function TodoApp() {
     setTodos(newTodos);
   };
 
+  const updateTodo = (index, newText) => {
+    const newTodos = [...todos];
+    newTodos[index].text = newText;
+    setTodos(newTodos); // 수정 후 상태 업데이트
+  };
+
   const handleColorClick = (color) => {
     setSelectedColor(color);
-    setFocusInput(true); // 색상 클릭 시 입력 필드로 포커스 이동
+    setFocusInput(true);
   };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    setIsSearching(true); // 검색 상태로 전환
+    setIsSearching(true);
   };
 
   const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const resetSearch = () => {
     setSearchTerm('');
-    setIsSearching(false); // 검색 상태 해제
+    setIsSearching(false);
   };
 
   return (
@@ -58,7 +64,6 @@ function TodoApp() {
     >
       <h1>Todo App</h1>
 
-      {/* TodoInput 컴포넌트: 할 일 추가하는 입력 필드 */}
       <TodoInput
         addTodo={addTodo}
         selectedColor={selectedColor}
@@ -66,7 +71,6 @@ function TodoApp() {
         setFocusInput={setFocusInput}
       />
 
-      {/* 검색 입력 필드 */}
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <input
           type="text"
@@ -78,8 +82,7 @@ function TodoApp() {
             padding: '10px',
             width: '200px',
             borderRadius: '10px',
-            border: '2px solid',
-            borderColor: 'black',
+            border: '2px solid black',
             marginRight: '10px',
           }}
         />
@@ -88,10 +91,9 @@ function TodoApp() {
       <div>
         <p>할 일을 더블 클릭하면 삭제됩니다.</p>
       </div>
-      {/* 색상 선택바 컴포넌트 */}
+
       <TodoColorbar handleColorClick={handleColorClick} />
 
-      {/* 검색 중일 때만 검색 취소 버튼 표시 */}
       {isSearching && (
         <button
           onClick={resetSearch}
@@ -108,8 +110,12 @@ function TodoApp() {
         </button>
       )}
 
-      {/* Todo 리스트 컴포넌트 */}
-      <TodoList todos={isSearching ? filteredTodos : todos} removeTodo={removeTodo} isSearching={isSearching} />
+      <TodoList
+        todos={isSearching ? filteredTodos : todos}
+        removeTodo={removeTodo}
+        updateTodo={updateTodo}
+        isSearching={isSearching}
+      />
     </div>
   );
 }
