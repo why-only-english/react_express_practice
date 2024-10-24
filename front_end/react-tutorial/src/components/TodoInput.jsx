@@ -38,13 +38,14 @@ function TodoInput({ addTodo, selectedColor, focusInput, setFocusInput }) {
       <button
         onClick={() => {
           addTodo(inputValue);
-          setInputValue(''); // 버튼 클릭 시 할 일 추가 및 입력창 초기화
+          setInputValue('');
         }}
         style={{
           marginLeft: '10px',
           padding: '10px',
           backgroundColor: '#78909c',
           color: 'white',
+          cursor: 'pointer',
           borderRadius: '4px',
         }}
       >

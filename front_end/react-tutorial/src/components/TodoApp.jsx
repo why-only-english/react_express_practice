@@ -95,6 +95,7 @@ function TodoApp() {
             padding: '10px',
             backgroundColor: '#ff6666',
             color: 'white',
+            cursor: 'pointer',
             borderRadius: '4px',
           }}
         >
