@@ -1,4 +1,4 @@
-function Colorbar({ handleColorClick }) {
+function TodoColorbar({ handleColorClick }) {
   return (
     <div style={{ margin: '1px 0' }}>
       {['#ffffff', '#ef9a9a', '#fff59d', '#a5d6a7'].map((color) => (
@@ -21,4 +21,4 @@ function Colorbar({ handleColorClick }) {
   );
 }
 
-export default Colorbar;
+export default TodoColorbar;
