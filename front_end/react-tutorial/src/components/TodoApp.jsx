@@ -5,17 +5,62 @@ import TodoList from './TodoList';
 import TodoColorbar from './TodoColorbar';
 
 function TodoApp() {
-  const { todoList, addTodo, removeTodo, editTodo, setColor, selectedColor } = UseTodo(); // useTodo() -> UseTodo()
+  const { todoList, addTodo, removeTodo, editTodo, setColor, selectedColor } = UseTodo();
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [focusInput, setFocusInput] = useState(false);
+
+  // 문자열에서 한글 초성만 추출하는 함수
+  const getChosung = (str) => {
+    const chosung = [
+      'ㄱ',
+      'ㄲ',
+      'ㄴ',
+      'ㄷ',
+      'ㄸ',
+      'ㄹ',
+      'ㅁ',
+      'ㅂ',
+      'ㅃ',
+      'ㅅ',
+      'ㅆ',
+      'ㅇ',
+      'ㅈ',
+      'ㅉ',
+      'ㅊ',
+      'ㅋ',
+      'ㅌ',
+      'ㅍ',
+      'ㅎ',
+    ];
+
+    return [...str]
+      .map((char) => {
+        const code = char.charCodeAt(0) - 0xac00;
+        if (code >= 0 && code <= 11172) {
+          const chosungIndex = Math.floor(code / 588);
+          return chosung[chosungIndex];
+        }
+        return char;
+      })
+      .join('');
+  };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     setIsSearching(true);
   };
 
-  const filteredTodos = todoList.filter((todo) => todo.text.toLowerCase().includes(searchTerm.toLowerCase()));
+  // 필터링 로직에 초성과 시작 부분 일치 검사 추가
+  const filteredTodos = todoList.filter((todo) => {
+    const lowerText = todo.text.toLowerCase();
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    const textChosung = getChosung(lowerText);
+    const searchTermChosung = getChosung(lowerSearchTerm);
+
+    // 초성의 시작 부분 일치 검사
+    return lowerText.includes(lowerSearchTerm) || textChosung.startsWith(searchTermChosung);
+  });
 
   const resetSearch = () => {
     setSearchTerm('');
