@@ -106,7 +106,7 @@ function TodoApp() {
         <p>할 일을 더블 클릭하면 삭제됩니다.</p>
       </div>
 
-      <TodoColorbar handleColorClick={setColor} />
+      <TodoColorbar handleColorClick={setColor} setFocusInput={setFocusInput} />
 
       {isSearching && (
         <button

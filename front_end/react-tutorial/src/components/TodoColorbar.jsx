@@ -1,10 +1,15 @@
-function TodoColorbar({ handleColorClick }) {
+function TodoColorbar({ handleColorClick, setFocusInput }) {
+  const handleColorSelection = (color) => {
+    handleColorClick(color);
+    setFocusInput(true);
+  };
+
   return (
     <div style={{ margin: '1px 0' }}>
       {['#ffffff', '#ef9a9a', '#fff59d', '#a5d6a7'].map((color) => (
         <span
           key={color}
-          onClick={() => handleColorClick(color)}
+          onClick={() => handleColorSelection(color)}
           style={{
             display: 'inline-block',
             width: '20px',
