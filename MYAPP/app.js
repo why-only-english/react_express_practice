@@ -6,6 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const boardRouter = require('./routes/board');
+const birdsRouter = require('./routes/birds');
+
+
+// http://localhost:3000
 
 var app = express();
 
@@ -19,8 +24,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/hello-world', (req, res, next)=>{
+  res.json({
+    title: "Hello World",
+    data: "blah blah"
+  })
+})
+app.post('/hello-world', (req, res)=>{
+  res.send("This is Post Request")
+})
+app.put('/hello-world', (req, res)=>{
+  res.send("This is Put Request")
+})
+app.delete('/hello-world', (req, res)=>{
+  res.send("This is Delete Request")
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/board', boardRouter);
+app.use('/birds', birdsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
