@@ -6,7 +6,9 @@ const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const todoRouter = require("./routes/todos");
 
+const mongoose = require("./db");
 const app = express();
 
 // CORS 설정
@@ -21,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // 라우터 설정
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use('/todos', todoRouter);
 
 // 404 에러 핸들러
 app.use(function (req, res, next) {
