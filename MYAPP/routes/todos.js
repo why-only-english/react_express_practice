@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Todo = require('../models/Todo');
+const {requireAuth} = require('../utils/auth');
 
 // URL
 // GET /todos
@@ -10,7 +11,7 @@ router.get('/', (req,res)=>{
     })
 })
 // POST /todos
-router.post('/', (req, res)=>{
+router.post('/',requireAuth, (req, res)=>{
     const {text, color} = req.body;
     Todo.create({
         text,
