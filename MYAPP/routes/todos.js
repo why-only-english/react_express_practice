@@ -11,7 +11,7 @@ router.get('/', (req,res)=>{
     })
 })
 // POST /todos
-router.post('/',requireAuth, (req, res)=>{
+router.post('/', authenticate, (req, res)=>{
     const {text, color} = req.body;
     Todo.create({
         text,
