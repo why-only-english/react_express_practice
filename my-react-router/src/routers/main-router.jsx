@@ -1,7 +1,7 @@
 // Router: 각 URL에 따른 page 컴포넌트 연결
 import { createBrowserRouter } from "react-router-dom";
-import MainPage from "~/pages/MainPage";
-import SamplePage from "~/pages/SamplePage";
+import MainPage from "~/routes/page";
+import BoardPage from "~/routes/board/page"
 
 const router = createBrowserRouter([
   {
@@ -10,8 +10,8 @@ const router = createBrowserRouter([
     index: true,
   },
   {
-    path: "/sample",
-    element: <SamplePage />,
+    path: "/board",
+    element: <BoardPage />,
     index: true,
   },
 ]);
