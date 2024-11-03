@@ -9,4 +9,10 @@ export default defineConfig({
       '/api': 'http://localhost:3000',
     },
   },
+  resolve: {
+    alias: {
+      '~/components' :'/src/components',
+      '~/pages' : '/src/pages',
+    }
+  }
 });
