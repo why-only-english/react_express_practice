@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function SamplePage() {
   return (
@@ -6,5 +6,5 @@ export default function SamplePage() {
       SamplePage
       <Link to="/">Main으로 이동</Link>
     </div>
-  )
+  );
 }
